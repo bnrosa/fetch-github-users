@@ -3,7 +3,7 @@ import { gql } from "@apollo/client"
 
 export interface UserNode {
     node: {
-        avaterUrl: string;
+        avatarUrl: string;
         bio: string | null;
         followers: {
             totalCount: number;
