@@ -38,9 +38,8 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
           <Button
             type="button"
             aria-current="page"
-            background={currentPage === index +1 ? "purple.100" : "white"}
-            borderColor={currentPage === index +1 ? "purple.500" : "gray.300"}
-            textColor={currentPage === index +1 ? "purple.600" : "gray.500"}
+            background={currentPage === index +1 ? "cyan.100" : "white"}
+            textColor={currentPage === index +1 ? "cyan.600" : "gray.500"}
             _hover={currentPage === index +1 ? {} : {bg: "gray.50"}}
             px={4}
             mx={0.5}
@@ -58,7 +57,6 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
         return (
           <Text
             background="white"
-            borderColor="gray.300"
             textColor="gray.500"
             _hover={{bg: "gray.50"}}
             px={4}
@@ -77,7 +75,6 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
         return (
           <Text
             background="white"
-            borderColor="gray.300"
             textColor="gray.500"
             _hover={{bg: "gray.50"}}
             px={4}
@@ -100,7 +97,6 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
       <IconButton 
           type="button"
           background="white"
-          borderColor="gray.300"
           textColor="gray.500"
           _hover={{bg: "gray.50"}}
           px={4}
@@ -118,7 +114,6 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
       
       <IconButton type="button"
         background="white"
-        borderColor="gray.300"
         textColor="gray.500"
         _hover={{bg: "gray.50"}}
         px={4}
