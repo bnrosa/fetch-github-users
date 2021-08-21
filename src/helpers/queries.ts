@@ -16,6 +16,7 @@ export interface UserNode {
         }
         login: string;
         name: string;
+        url: string;
     }
 }
 
@@ -50,6 +51,7 @@ export const SEARCH_USERS = gql`
                     bio
                     name
                     login
+                    url
                 }
             }
         }
