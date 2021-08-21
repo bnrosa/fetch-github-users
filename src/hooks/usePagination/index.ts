@@ -5,15 +5,6 @@ const usePagination = (data: Array<UserNode>, rowsPerPage: number) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [displayData, setDisplayData] = useState<Array<UserNode>>([]);
 
-  // useEffect(() => {
-  //   if (data) {
-  //     const start = (currentPage - 1) * rowsPerPage;
-  //     const end = currentPage * rowsPerPage;
-  //     setPages(Math.ceil(data.length / rowsPerPage));
-  //     setDisplayData(data.slice(start, end));
-  //   }
-  // }, [data, rowsPerPage]);
-
   useEffect(() => {
     if (data) {
       const start = (currentPage - 1) * rowsPerPage;
