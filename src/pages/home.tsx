@@ -1,19 +1,20 @@
 import React, { useState, useRef } from "react";
 import {Flex, Heading, Input, Button, Select, Container, Text, Spinner} from "@chakra-ui/react"
-import { SEARCH_USERS, SearchUsersVars, GithubUsersSearch, UserNode } from "../helpers/queries"
+import { SEARCH_USERS, SearchUsersVars, GithubUsersSearch } from "../helpers/queries"
 import { useQuery } from "@apollo/client";
 import usePagination from "../hooks/usePagination/index";
 import PaginationButtons from "../hooks/usePagination/PaginationButtons";
-
+import UserTableRow from "../components/UserTableRow";
 
 const Home = () => {  
     const [searchInput, setSearchInput] = useState("example");
     const [perPageResults, setPerPageResults] = useState(10);
+    const [totalResults] = useState(100);
     const { data, loading, error } = useQuery<GithubUsersSearch, SearchUsersVars>(SEARCH_USERS, 
         {
             variables: {
                 query: searchInput,
-                first: 100
+                first: totalResults
             }
         }
     );
@@ -23,11 +24,7 @@ const Home = () => {
       );
     const inputEl = useRef<HTMLInputElement>(null);
     
-    if(data){
-        console.log(data)
-    }
-    else if(error){
-        console.log("Y U NO WORK:", Number(perPageResults))
+    if(error && !data){
         console.log(error);
     }
     return (
@@ -54,7 +51,7 @@ const Home = () => {
                
                 <Button 
                     onClick={() => {setSearchInput(inputEl?.current?.value || "");
-                    }}
+                    setCurrentPage(1)}}
                     type="submit"
                     background="cyan.100"
                     textColor="cyan.600"
@@ -67,15 +64,15 @@ const Home = () => {
                 {loading && <Spinner p={10} mt={10} />}   
                 {error && <Text>{error.message}</Text>}  
                 {displayData && 
-                    <div>
+                    <section>
                         <Text my={2}>
-                            This search shows 100 of {data?.search.userCount} results 
+                            This search shows <strong>{totalResults > (data?.search?.userCount || 0) ? data?.search.userCount : totalResults}</strong> of {data?.search.userCount} results 
                         </Text>
                         {displayData.map((item, index: number) => {
-                            return <Text key={index} mb={2}>{index+1}. {item.node.login}</Text>
+                            return <UserTableRow key={index} user={item} />
                         })}
                     <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
-                    </div>
+                    </section>
                     
                 }
                 </Flex>  
