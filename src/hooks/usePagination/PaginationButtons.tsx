@@ -93,7 +93,7 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
   };
 
   return (
-    <Flex p={2} background="gray.50" direction="row" rounded="md" aria-label="Pagination">
+    <Flex justifyContent="center" p={2} background="gray.50" direction="row" rounded="md" aria-label="Pagination">
       <IconButton 
           type="button"
           background="white"
