@@ -4,13 +4,11 @@ import {UserNode} from "../helpers/queries"
 
 interface UserTableRowProps {
   user: UserNode;
-  key: number | string;
 }
 
-const UserTableRow: FC<UserTableRowProps> = ({user, key}) => {
-    console.log(user.node.avatarUrl);
+const UserTableRow: FC<UserTableRowProps> = ({user}) => {
     return( 
-    <a key={key} href={user.node.url} target="_blank" rel="noreferrer">
+    <a href={user.node.url} target="_blank" rel="noreferrer">
       <WrapItem my={2} p={2} bg="gray.50" boxShadow="md" rounded="md" alignItems="center">
         <Avatar size="xl" name={user.node.login} src={user.node.avatarUrl} />
         <Flex direction="column" ml={2} px={2} py={1}>

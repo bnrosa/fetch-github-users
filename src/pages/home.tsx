@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
-import {Flex, Heading, Input, Button, Select, Container, Text, Spinner} from "@chakra-ui/react"
+import React, { useState, useRef, useEffect } from "react";
+import {Flex, Heading, Container, Text, Spinner} from "@chakra-ui/react"
 import { SEARCH_USERS, SearchUsersVars, GithubUsersSearch } from "../helpers/queries"
 import { useQuery } from "@apollo/client";
-import usePagination from "../hooks/usePagination/index";
-import PaginationButtons from "../hooks/usePagination/PaginationButtons";
+import PaginationButtons from "../components/PaginationButtons";
 import UserTableRow from "../components/UserTableRow";
+import SearchForm from "../components/SearchForm";
 
 const Home = () => {  
     const [searchInput, setSearchInput] = useState("example");
@@ -18,10 +18,19 @@ const Home = () => {
             }
         }
     );
-    const { displayData, setDisplayData, currentPage, setCurrentPage, pages } = usePagination(
-        data ? data.search.edges : [],
-        perPageResults,
-      );
+    const [pages, setPages] = useState(data?.search.edges.length ? Math.ceil(data?.search.edges.length / perPageResults) : 1);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [displayData, setDisplayData] = useState<Array<any>>([]);
+
+    useEffect(() => {
+        if (data) {
+        const start = (currentPage - 1) * perPageResults;
+        const end = currentPage * perPageResults;
+        setPages(Math.ceil(data?.search.edges.length / perPageResults));
+        setDisplayData(data?.search.edges.slice(start, end));
+        }
+    }, [data, currentPage, perPageResults]);
+
     const inputEl = useRef<HTMLInputElement>(null);
     
     if(error && !data){
@@ -29,37 +38,13 @@ const Home = () => {
     }
     return (
         <Flex minHeight="100vh" justifyContent="center" background="gray.100" p={16}>
-            <Container direction="column" background="white" p={8} rounded={6}>
+            <Container maxWidth="45vw" direction="column" background="white" p={8} rounded={6}>
                 <Heading mb={6}>Github Users</Heading>
-                <Flex direction="row" mb={2} >
-                    <Flex direction="column" p={2}>
-                        <Text>User name:</Text>
-                        <Input placeholder="example" name="input"
-                        ref={inputEl} type="text" mr={2}
-                    />
-                    </Flex>
-                    <Flex direction="column" p={2}>
-                        <Text>Per page results: </Text>
-                        <Select minWidth="5rem" onChange={(e) => {setPerPageResults(Number(e.target.value));}}>
-                            <option value={10}>10</option>
-                            <option value={25}>25</option>
-                            <option value={50}>50</option>
-                            <option value={100}>100</option>
-                        </Select>
-                    </Flex>  
-                </Flex>
-               
-                <Button 
-                    onClick={() => {setSearchInput(inputEl?.current?.value || "");
-                    setCurrentPage(1)}}
-                    type="submit"
-                    background="cyan.100"
-                    textColor="cyan.600"
-                    boxShadow="md"
-                    rounded="md"
-                >
-                    Search
-                </Button>
+                <SearchForm inputEl={inputEl}
+                    setSearchInput={setSearchInput}
+                    setPerPageResults={setPerPageResults}
+                    setCurrentPage={setCurrentPage}
+                />
                 <Flex direction="column" alignItems="center">
                 {loading && <Spinner p={10} mt={10} />}   
                 {error && <Text>{error.message}</Text>}  
@@ -73,7 +58,6 @@ const Home = () => {
                         })}
                     <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
                     </section>
-                    
                 }
                 </Flex>  
             </Container>

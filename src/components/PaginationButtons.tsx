@@ -36,6 +36,7 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
       if (numberOfPages < 7 || isShown(current, index + 1, numberOfPages)) {
         return (
           <Button
+            key={index}
             type="button"
             aria-current="page"
             background={currentPage === index +1 ? "cyan.100" : "white"}
@@ -56,6 +57,7 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
         leftElipsis = true;
         return (
           <Text
+            key={index}
             background="white"
             textColor="gray.500"
             _hover={{bg: "gray.50"}}
@@ -74,6 +76,7 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
         rightElipsis = true;
         return (
           <Text
+            key={index}
             background="white"
             textColor="gray.500"
             _hover={{bg: "gray.50"}}

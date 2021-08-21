@@ -16,7 +16,7 @@ const client = new ApolloClient({
       "Authorization": `Bearer ${process.env.REACT_APP_GITHUB_API_KEY}`
   },
 });
-console.log(process.env.REACT_APP_GITHUB_API_KEY);
+
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
