@@ -4977,11 +4977,6 @@
   "resolved" "https://registry.npmjs.org/depd/-/depd-1.1.2.tgz"
   "version" "1.1.2"
 
-"dequal@2.0.2":
-  "integrity" "sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug=="
-  "resolved" "https://registry.npmjs.org/dequal/-/dequal-2.0.2.tgz"
-  "version" "2.0.2"
-
 "des.js@^1.0.0":
   "integrity" "sha512-Q0I4pfFrv2VPd34/vfLrFOoRmlYj3OV50i7fskps1jZWK1kApMWWT9G6RRUeYedLcBDIhnSDaUvJMb3AhUlaEA=="
   "resolved" "https://registry.npmjs.org/des.js/-/des.js-1.0.1.tgz"
@@ -10317,7 +10312,7 @@
     "invariant" "^2.2.4"
     "tslib" "^1.0.0"
 
-"react@*", "react@^15.3.0 || ^16.0.0 || ^17.0.0", "react@^16.11.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || 17.x", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@>=16.8.6", "react@17.0.2":
+"react@*", "react@^15.3.0 || ^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || 17.x", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@>=16.8.6", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -11700,13 +11695,6 @@
     "stable" "^0.1.8"
     "unquote" "~1.1.1"
     "util.promisify" "~1.0.0"
-
-"swr@^0.5.6":
-  "integrity" "sha512-Bmx3L4geMZjYT5S2Z6EE6/5Cx6v1Ka0LhqZKq8d6WL2eu9y6gHWz3dUzfIK/ymZVHVfwT/EweFXiYGgfifei3w=="
-  "resolved" "https://registry.npmjs.org/swr/-/swr-0.5.6.tgz"
-  "version" "0.5.6"
-  dependencies:
-    "dequal" "2.0.2"
 
 "symbol-observable@^4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="
