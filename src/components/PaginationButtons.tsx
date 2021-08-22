@@ -8,6 +8,22 @@ type PaginationButtonsProps = {
   pages: number;
 };
 
+const CommasText: FunctionComponent<{text: string}> = ({text}) => {
+  return <Text
+      background="white"
+      textColor="gray.500"
+      _hover={{bg: "gray.50"}}
+      px={4}
+      mx={0.5}
+      py={2}
+      boxShadow="md"
+      fontSize="sm"
+      rounded="md"
+    >
+      {text}
+  </Text>
+}
+
 const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentPage, setCurrentPage, pages }) => {
   const isShown = (current: number, target: number, total: number) => {
     if (target === current - 1 && current - 1 > 0) {
@@ -56,39 +72,13 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
       if (!leftElipsis && current > 3) {
         leftElipsis = true;
         return (
-          <Text
-            key={index}
-            background="white"
-            textColor="gray.500"
-            _hover={{bg: "gray.50"}}
-            px={4}
-            mx={0.5}
-            py={2}
-            boxShadow="md"
-            fontSize="sm"
-            rounded="md"
-          >
-            ...
-          </Text>
+          <CommasText text="..." key={index} />
         );
       }
       if (!rightElipsis && current < numberOfPages - 2 && index > current) {
         rightElipsis = true;
         return (
-          <Text
-            key={index}
-            background="white"
-            textColor="gray.500"
-            _hover={{bg: "gray.50"}}
-            px={4}
-            mx={0.5}
-            py={2}
-            boxShadow="md"
-            fontSize="sm"
-            rounded="md"
-          >
-            ...
-          </Text>
+          <CommasText text="..." key={index} />
         );
       }
       return null;
