@@ -49,8 +49,13 @@ const Home = () => {
                 />
                 <Flex direction="column" alignItems="center">
                 {loading && <Spinner p={10} mt={10} />}   
-                {error && <Text>{error.message}</Text>}  
-                {displayData && 
+                {error && 
+                    <Text my="4" textAlign="center" w="full" rounded="md"
+                        bg="red.100" textColor="red.600" fontWeight="bold" p={4}>
+                    {error.message}
+                    </Text>
+                }  
+                {!error && displayData && 
                     <section>
                         <Text my={2}>
                             This search shows <strong>{totalResults > (data?.search?.userCount || 0) ? data?.search.userCount : totalResults}</strong> of {data?.search.userCount} results 
