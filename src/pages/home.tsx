@@ -6,10 +6,12 @@ import PaginationButtons from "../components/PaginationButtons";
 import UserTableRow from "../components/UserTableRow";
 import SearchForm from "../components/SearchForm";
 
+const totalResults = 100;
+
 const Home = () => {  
     const [searchInput, setSearchInput] = useState("example");
     const [perPageResults, setPerPageResults] = useState(10);
-    const [totalResults] = useState(100);
+    
     const { data, loading, error } = useQuery<GithubUsersSearch, SearchUsersVars>(SEARCH_USERS, 
         {
             variables: {
