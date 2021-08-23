@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {Flex, Heading, Container, Text, Spinner} from "@chakra-ui/react"
+import {Flex, Heading, Container, Text, Spinner, Button} from "@chakra-ui/react"
 import { SEARCH_USERS, SearchUsersVars, GithubUsersSearch } from "../helpers/queries"
 import { useQuery } from "@apollo/client";
 import PaginationButtons from "../components/PaginationButtons";
@@ -12,12 +12,13 @@ const Home = () => {
     const [searchInput, setSearchInput] = useState("example");
     const [perPageResults, setPerPageResults] = useState(10);
     
-    const { data, loading, error } = useQuery<GithubUsersSearch, SearchUsersVars>(SEARCH_USERS, 
+    const { data, loading, error, refetch } = useQuery<GithubUsersSearch, SearchUsersVars>(SEARCH_USERS, 
         {
             variables: {
                 query: searchInput,
                 first: totalResults
-            }
+            },
+            notifyOnNetworkStatusChange: true
         }
     );
     const [pages, setPages] = useState(data?.search.edges.length ? Math.ceil(data?.search.edges.length / perPageResults) : 1);
@@ -49,14 +50,16 @@ const Home = () => {
                 />
                 <Flex direction="column" alignItems="center">
                 {loading && <Spinner p={10} mt={10} />}   
-                {error && 
-                    <Text my="4" textAlign="center" w="full" rounded="md"
-                        bg="red.100" textColor="red.600" fontWeight="bold" p={4}>
-                    {error.message}
-                    </Text>
+                {!loading && error && 
+                    <Flex justifyContent="space-around" my="2" textAlign="center" w="full" rounded="md" bg="red.100" p={2}>
+                        <Text textColor="red.600" fontWeight="bold" p={2}>
+                            {error.message}
+                        </Text>
+                        <Button onClick={() =>refetch()}> Retry</Button>    
+                    </Flex>
                 }  
-                {!error && displayData && 
-                    <section>
+                {!error && !loading && displayData && 
+                    <section>   
                         <Text my={2}>
                             This search shows <strong>{totalResults > (data?.search?.userCount || 0) ? data?.search.userCount : totalResults}</strong> of {data?.search.userCount} results 
                         </Text>
