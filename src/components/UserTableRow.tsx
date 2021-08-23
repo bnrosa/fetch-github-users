@@ -11,7 +11,7 @@ const UserTableRow: FC<UserTableRowProps> = (props) => {
     return( 
     <a href={url} target="_blank" rel="noreferrer">
       <WrapItem justifyContent="left" my={2} p={2} bg="gray.50" boxShadow="md" rounded="md" alignItems="center">
-        <Avatar size="xl" name={login} src={avatarUrl} />
+        <Avatar size="lg" name={login} src={avatarUrl} />
         <Flex direction="column" ml={2} px={2} py={1}>
           <Text textAlign="left" my={1} fontSize="lg" fontWeight="bold">{name || "no_name"} - {login || "no_username"}</Text>
           <Text color="gray.700" fontSize="xs" my={1}>
