@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import {Flex, Heading, Container, Text, Spinner, Button} from "@chakra-ui/react"
+import {Flex, Heading, Container } from "@chakra-ui/react"
 import { SEARCH_USERS, SearchUsersVars, GithubUsersSearch } from "../helpers/queries"
 import { useQuery } from "@apollo/client";
-import PaginationButtons from "../components/PaginationButtons";
-import UserTableRow from "../components/UserTableRow";
 import SearchForm from "../components/SearchForm";
+import UserTable from "../components/UserTable";
 
 const totalResults = 100;
 
@@ -49,26 +48,16 @@ const Home = () => {
                     setCurrentPage={setCurrentPage}
                 />
                 <Flex direction="column" alignItems="center">
-                {loading && <Spinner p={10} mt={10} />}   
-                {!loading && error && 
-                    <Flex justifyContent="space-around" my="2" textAlign="center" w="full" rounded="md" bg="red.100" p={2}>
-                        <Text textColor="red.600" fontWeight="bold" p={2}>
-                            {error.message}
-                        </Text>
-                        <Button onClick={() =>refetch()}> Retry</Button>    
-                    </Flex>
-                }  
-                {!error && !loading && displayData && 
-                    <section>   
-                        <Text my={2}>
-                            This search shows <strong>{totalResults > (data?.search?.userCount || 0) ? data?.search.userCount : totalResults}</strong> of {data?.search.userCount} results 
-                        </Text>
-                        {displayData.map((item, index: number) => {
-                            return <UserTableRow key={index} user={item} />
-                        })}
-                    <PaginationButtons currentPage={currentPage} setCurrentPage={setCurrentPage} pages={pages} />
-                    </section>
-                }
+                    <UserTable loading={loading}
+                        error={error}
+                        displayData={displayData}
+                        refetch={refetch}
+                        totalResults={totalResults}
+                        data={data}
+                        pages={pages}
+                        setCurrentPage={setCurrentPage}
+                        currentPage={currentPage}
+                    />
                 </Flex>  
             </Container>
         </Flex>
