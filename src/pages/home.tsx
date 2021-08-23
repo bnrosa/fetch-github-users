@@ -40,8 +40,8 @@ const Home = () => {
     }
     return (
         <Flex minHeight="100vh" justifyContent="center" background="gray.100" p={16}>
-            <Container maxWidth="45vw" direction="column" background="white" p={8} rounded={6}>
-                <Heading mb={6}>Github Users</Heading>
+            <Container w="95vw" direction="column" background="white" p={8} rounded={6}>
+                <Heading mb={6}>Find Github Users by Username 🕵🏽‍♂️</Heading>
                 <SearchForm inputEl={inputEl}
                     setSearchInput={setSearchInput}
                     setPerPageResults={setPerPageResults}

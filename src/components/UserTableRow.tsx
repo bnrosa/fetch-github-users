@@ -10,10 +10,10 @@ const UserTableRow: FC<UserTableRowProps> = (props) => {
     const {url, avatarUrl, followers, following, name, login, bio, starredRepositories} = props.user.node;
     return( 
     <a href={url} target="_blank" rel="noreferrer">
-      <WrapItem my={2} p={2} bg="gray.50" boxShadow="md" rounded="md" alignItems="center">
+      <WrapItem justifyContent="left" my={2} p={2} bg="gray.50" boxShadow="md" rounded="md" alignItems="center">
         <Avatar size="xl" name={login} src={avatarUrl} />
         <Flex direction="column" ml={2} px={2} py={1}>
-          <Text textAlign="center" my={1} fontSize="lg" fontWeight="bold">{name || "no_name"} - {login || "no_username"}</Text>
+          <Text textAlign="left" my={1} fontSize="lg" fontWeight="bold">{name || "no_name"} - {login || "no_username"}</Text>
           <Text color="gray.700" fontSize="xs" my={1}>
             <strong>Followers: </strong> {followers?.totalCount || 0}{"\t"}
             <strong>Following: </strong> {following?.totalCount || 0}{"\t"}

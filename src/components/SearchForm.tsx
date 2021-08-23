@@ -13,7 +13,7 @@ const SearchForm: FC<SearchFormProps> = ({setPerPageResults, setSearchInput, set
         <>
             <Flex direction="row" mb={2} >
                 <Flex direction="column" p={2}>
-                    <Text>User name:</Text>
+                    <Text>Username to search for:</Text>
                     <Input placeholder="example" name="input"
                     ref={inputEl} type="text" mr={2}
                     />
