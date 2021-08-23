@@ -13,11 +13,11 @@ const CommasText: FunctionComponent<{text: string}> = ({text}) => {
       background="white"
       textColor="gray.500"
       _hover={{bg: "gray.50"}}
-      px={3}
+      px={2}
       mx={0.5}
       py={1.5}
       boxShadow="md"
-      fontSize={{md: "xs", lg: "sm" }}
+      fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
       rounded="md"
     >
       {text}
@@ -58,11 +58,11 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
             background={currentPage === index +1 ? "cyan.100" : "white"}
             textColor={currentPage === index +1 ? "cyan.600" : "gray.500"}
             _hover={currentPage === index +1 ? {} : {bg: "gray.50"}}
-            px={{ sm: 1, md: 2, lg: 4 }}
             mx={0.5}
-            py={{ sm: 1, md: 1, lg: 2 }}
+            minWidth={["0.1rem", "0.6rem", "1.5rem", "2rem"]}
+            w={["0.1rem", "0.6rem", "1.5rem", "2rem"]}
             boxShadow="md"
-            fontSize={{md: "xs", lg: "sm" }}
+            fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
             onClick={() => setCurrentPage(index + 1)}
           >
             {index + 1}
@@ -92,11 +92,11 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
           background="white"
           textColor="gray.500"
           _hover={{bg: "gray.50"}}
-          px={{ sm: 1, md: 2, lg: 4 }}
           mx={0.5}
-          py={{ sm: 1, md: 1, lg: 2 }}
           boxShadow="md"
-          fontSize={{md: "xs", lg: "sm" }}
+          minWidth={["1.8rem", "2rem"]}
+          w={["1.8rem", "2rem"]}
+          fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
           onClick={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}
           disabled={currentPage === 1}
           aria-label="Search database" icon={<IoIosArrowBack />}>
@@ -109,11 +109,11 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
         background="white"
         textColor="gray.500"
         _hover={{bg: "gray.50"}}
-        px={{ sm: 1, md: 2, lg: 4 }}
         mx={0.5}
-        py={{ sm: 1, md: 1, lg: 2 }}
         boxShadow="md"
-        fontSize={{md: "xs", lg: "sm" }}
+        minWidth={["1.8rem", "2rem"]}
+        w={["1.8rem", "2rem"]}
+        fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
         onClick={() => setCurrentPage(currentPage === pages ? currentPage : currentPage + 1)}
         disabled={currentPage === pages}
         aria-label="Search database" icon={<IoIosArrowForward />} >
