@@ -63,8 +63,11 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
             w={["0.1rem", "0.6rem", "1.5rem", "2rem"]}
             boxShadow="md"
             fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
-            onClick={() => setCurrentPage(index + 1)}
-          >
+            onClick={(e) => {
+              setCurrentPage(index + 1);
+              e.currentTarget.scrollIntoView()
+            }}
+            >
             {index + 1}
           </Button>
         );
@@ -97,7 +100,10 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
           minWidth={["1.8rem", "2rem"]}
           w={["1.8rem", "2rem"]}
           fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
-          onClick={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}
+          onClick={(e) => {
+            setCurrentPage(currentPage === 1 ? 1 : currentPage - 1);
+            e.currentTarget.scrollIntoView();
+          }}
           disabled={currentPage === 1}
           aria-label="Search database" icon={<IoIosArrowBack />}>
           <span className="sr-only">Previous</span>
@@ -114,7 +120,10 @@ const PaginationButtons: FunctionComponent<PaginationButtonsProps> = ({ currentP
         minWidth={["1.8rem", "2rem"]}
         w={["1.8rem", "2rem"]}
         fontSize={{base: "0.8rem", md: "xs", lg: "sm" }}
-        onClick={() => setCurrentPage(currentPage === pages ? currentPage : currentPage + 1)}
+        onClick={(e) => {
+          setCurrentPage(currentPage === pages ? currentPage : currentPage + 1);
+          e.currentTarget.scrollIntoView();
+        }}
         disabled={currentPage === pages}
         aria-label="Search database" icon={<IoIosArrowForward />} >
           <span className="sr-only">Next</span>
